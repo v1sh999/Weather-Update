@@ -1,40 +1,33 @@
 import { createRoot } from "react-dom/client";
+import { useState } from "react";
 import weatherData from "./apiTest";
+import Box from "./display"
 
-let Box = (Weather) => {
-    if ((Weather.input) === ""){
-        console.log("Waiting for User Input")
-    }else{
-        <>
-        <ol>
-            {arr.map((item, i)=>{
-        return <li key={i}>{item}</li>
-    })}
-        </ol>
-        </>
+let Val = () => {
+    let [fetchInput,setFetchInput] = useState("")
+    const API_KEY = import.meta.env.VITE_API_KEY
 
+    async function fetchWeather(city){
+        try{
+            // let res = await fetch(`http://api.weatherstack.com/current?access_key=${API_KEY}&query=${city}`)
+            // let data = await res.json()
+            let data = weatherData
+            console.log(data)
+            return data
+        }catch(err){
+            // console.log(err)
+        }
     }
-}
-let fetchInput = ""
-function handleSearch(e){
-    e.preventDefault();
-    let query =e.target.elements.city.value
-    console.log("User Searched:",query)
-    fetchInput = fetchWeather(query)
-}
-async function fetchWeather(city){
-    try{
-        // let res = await fetch(`http://api.weatherstack.com/current?access_key=b4754a6a6cced9cb9dba65afab06d9ed&query=${city}`)
-        let res = weatherData
-        // let data = await res.json()
-        // console.log(data)
-        console.log(res)
-    }catch(err){
-        // console.log(err)
+
+    async function handleSearch(e){
+        e.preventDefault();
+        let query =e.target.elements.city.value
+        console.log("User Searched:",query)
+        let data = await fetchWeather(query)
+        setFetchInput(data)
     }
-}
-let val = (
-    <div>
+    
+    return <div>
         <form onSubmit={handleSearch}>
             <input
                 type="text"
@@ -43,7 +36,8 @@ let val = (
             />
             <button type="submit">Search</button>
         </form>
-        <Box input = {fetchInput}/>
+        <Box input = {fetchInput} />
     </div>
-)
-createRoot(document.getElementById("root")).render(val)
+}
+
+createRoot(document.getElementById("root")).render(<Val/>)
