@@ -1,6 +1,9 @@
 # Weather App
 A simple weather app built using HTML, CSS, and JavaScript that fetches real-time weather data using an API.
 
+## Live Demo
+https://vercel.com/v1sh999s-projects/weather-update
+
 ## Features
 - Search weather by city
 - Toggle between Celsius and Fahrenheit
