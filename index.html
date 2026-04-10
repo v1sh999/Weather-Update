@@ -1,13 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Update</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Weather App</h1>
+        <button id="toggle-units">°C</button>
+        <button id="toggle-darkmode">Dark</button>
+    </header>
+    <div>
+        <form id="search-form">
+            <input type="text" id="city-input" placeholder="search a city..." name="city">
+            <button type="submit" id="search-btn">Search</button>
+        </form>
+    </div>
+    <div id="weather-display"></div>
+
+    <script src="./script.js"></script>
+</body>
 </html>
